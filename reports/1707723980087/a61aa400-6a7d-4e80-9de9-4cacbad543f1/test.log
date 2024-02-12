@@ -1,0 +1,8 @@
+[2024-02-12 07:46:21] [1] [WARN] Reporting disabled: using no op test run registrar
+[2024-02-12 07:46:21] [1] [INFO] TEST [SwagLabsCarinaBench - login] STARTED at [08:46:21 2024-02-12]
+[2024-02-12 07:46:21] [1] [INFO] Starting driver session...
+[2024-02-12 07:46:22] [1] [ERROR] Failed to attach artifact reference 'app' to test run because it has not been started yet.
+[2024-02-12 07:46:25] [1] [INFO] Driver session started.
+[2024-02-12 07:46:26] [1] [INFO] PASS: element 'selectCredentialsForStandardUserButton' is clicked.
+[2024-02-12 07:46:27] [1] [INFO] PASS: element 'loginButton' is clicked.
+[2024-02-12 07:46:28] [1] [INFO] TEST [SwagLabsCarinaBench - login] PASSED at [08:46:28 2024-02-12]

@@ -1,0 +1,4 @@
+[2024-02-12 07:48:42] [1] [WARN] Reporting disabled: using no op test run registrar
+[2024-02-12 07:48:42] [1] [INFO] TEST [SwagLabsCarinaBench - textChangesOnClickingCartButton] STARTED at [08:48:42 2024-02-12]
+[2024-02-12 07:48:47] [1] [INFO] PASS: element 'addToCartButton' is clicked.
+[2024-02-12 07:48:48] [1] [INFO] TEST [SwagLabsCarinaBench - textChangesOnClickingCartButton] PASSED at [08:48:48 2024-02-12]

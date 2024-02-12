@@ -1,0 +1,9 @@
+[2024-02-12 07:44:17] [1] [WARN] Reporting disabled: using no op test run registrar
+[2024-02-12 07:44:17] [1] [INFO] TEST [SwagLabsCarinaBench - verifyUserCanLogout] STARTED at [08:44:17 2024-02-12]
+[2024-02-12 07:44:17] [1] [INFO] Starting driver session...
+[2024-02-12 07:44:19] [1] [INFO] Driver session started.
+[2024-02-12 07:44:21] [1] [INFO] PASS: element 'selectCredentialsForStandardUserButton' is clicked.
+[2024-02-12 07:44:22] [1] [INFO] PASS: element 'loginButton' is clicked.
+[2024-02-12 07:44:26] [1] [INFO] PASS: Tap on X:'32' Y:'66' was executed.
+[2024-02-12 07:44:27] [1] [INFO] PASS: element 'logoutButton' is clicked.
+[2024-02-12 07:44:28] [1] [INFO] TEST [SwagLabsCarinaBench - verifyUserCanLogout] PASSED at [08:44:28 2024-02-12]

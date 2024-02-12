@@ -1,0 +1,4 @@
+[2024-02-12 07:48:55] [1] [WARN] Reporting disabled: using no op test run registrar
+[2024-02-12 07:48:55] [1] [INFO] TEST [SwagLabsCarinaBench - verifyItemPage] STARTED at [08:48:55 2024-02-12]
+[2024-02-12 07:49:00] [1] [INFO] PASS: element 'name' is clicked.
+[2024-02-12 07:49:02] [1] [INFO] TEST [SwagLabsCarinaBench - verifyItemPage] PASSED at [08:49:02 2024-02-12]

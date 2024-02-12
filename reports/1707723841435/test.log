@@ -1,0 +1,35 @@
+[2024-02-12 07:44:01] [1] [INFO] 
+============= Basic configuration =============
+env=DEMO
+=========== Encryptor configuration ===========
+crypto_key_value=*****
+=========== WebDriver configuration ===========
+url=https://www.gsmarena.com
+selenium_url=http://localhost:4723/
+auto_screenshot=true
+localization_encoding=UTF-8
+language=en_US
+-------------- Driver capabilities ------------
+app=/Users/akhivyk/Downloads/iOS.Simulator.SauceLabs.Mobile.Sample.app.2.7.1.zip
+deviceType=phone
+platformVersion=17.2
+automationName=XCUITest
+platformName=iOS
+udid=1DEED7D2-B655-46BC-943A-C52B9FC2A938
+deviceName=iPhone 15 Pro
+===============================================
+
+[2024-02-12 07:44:01] [1] [WARN] Reporting disabled: using no op test run registrar
+[2024-02-12 07:44:02] [1] [INFO] [TestNG] Running:
+  /Users/akhivyk/Library/Caches/JetBrains/IdeaIC2023.1/temp-testng-customsuite.xml
+
+[2024-02-12 07:44:02] [1] [INFO] Set thread-count=1
+[2024-02-12 07:44:02] [1] [INFO] Set data-provider-thread-count=1
+[2024-02-12 07:44:02] [1] [INFO] CARINA_CORE_VERSION: 1.1.3
+[2024-02-12 07:44:39] [1] [INFO] INFO: '**************** Test execution summary ****************'.
+[2024-02-12 07:44:39] [1] [INFO] RESULT #1: TEST [SwagLabsCarinaBench - login] PASS [screenshots=file:///Users/akhivyk/Documents/solvd/SwagLabsCarinaBench/./reports/1707723841435/cdc4142e-1b0d-456c-89a4-0b27c837f6cb/report.html | log=file:///Users/akhivyk/Documents/solvd/SwagLabsCarinaBench/./reports/1707723841435/cdc4142e-1b0d-456c-89a4-0b27c837f6cb/test.log]
+[2024-02-12 07:44:39] [1] [INFO] RESULT #2: TEST [SwagLabsCarinaBench - textChangesOnClickingCartButton] PASS [screenshots=file:///Users/akhivyk/Documents/solvd/SwagLabsCarinaBench/./reports/1707723841435/5416a810-853b-455e-916d-00dd113a7a1e/report.html | log=file:///Users/akhivyk/Documents/solvd/SwagLabsCarinaBench/./reports/1707723841435/5416a810-853b-455e-916d-00dd113a7a1e/test.log]
+[2024-02-12 07:44:39] [1] [INFO] RESULT #3: TEST [SwagLabsCarinaBench - verifyItemPage] FAIL [log=file:///Users/akhivyk/Documents/solvd/SwagLabsCarinaBench/./reports/1707723841435/afb7fc7a-7919-4c06-96f5-07356ebe7abb/test.log]
+[2024-02-12 07:44:39] [1] [INFO] RESULT #4: TEST [SwagLabsCarinaBench - verifyUserCanLogout] PASS [screenshots=file:///Users/akhivyk/Documents/solvd/SwagLabsCarinaBench/./reports/1707723841435/517f6613-a79c-47e5-9ad4-f8e4479dbf8d/report.html | log=file:///Users/akhivyk/Documents/solvd/SwagLabsCarinaBench/./reports/1707723841435/517f6613-a79c-47e5-9ad4-f8e4479dbf8d/test.log]
+[2024-02-12 07:44:39] [1] [INFO] RESULT #5: TEST [SwagLabsCarinaBench - verifyUserCanMakeOrder] FAIL [log=file:///Users/akhivyk/Documents/solvd/SwagLabsCarinaBench/./reports/1707723841435/fb1b0ae6-f6ff-4d2e-b0f5-04c3e034caee/test.log]
+[2024-02-12 07:44:39] [1] [INFO] RESULT #6: TEST [SwagLabsCarinaBench - loginWithValidCredentials] PASS [screenshots=file:///Users/akhivyk/Documents/solvd/SwagLabsCarinaBench/./reports/1707723841435/1ac56af2-6a2e-4acb-98d6-6cfa86e5a211/report.html | log=file:///Users/akhivyk/Documents/solvd/SwagLabsCarinaBench/./reports/1707723841435/1ac56af2-6a2e-4acb-98d6-6cfa86e5a211/test.log]
