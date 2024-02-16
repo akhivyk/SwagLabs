@@ -1,6 +1,7 @@
 package com.solvd.carina.demo.swaglabs;
 
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.*;
+import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.*;
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.components.CartItem;
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.components.Item;
 import com.zebrunner.carina.core.IAbstractTest;
@@ -10,15 +11,15 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 @Slf4j
-public class SwagLabsIOSTest implements IAbstractTest {
-    private LoginPage loginPage;
-    private MainPage mainPage;
+public class SwagLabsTest implements IAbstractTest {
+    private LoginPageBase loginPage;
+    private MainPageBase mainPage;
 
     public void login() {
         loginPage = new LoginPage(getDriver());
 
         loginPage.selectStandardUser();
-        mainPage = loginPage.clickLogin();
+        mainPage = loginPage.clickLoginButton();
     }
 
     @Test
@@ -26,13 +27,13 @@ public class SwagLabsIOSTest implements IAbstractTest {
         SoftAssert softAssert = new SoftAssert();
         String expectedTitle = "PRODUCTS";
 
-        LoginPage loginPage = new LoginPage(getDriver());
+        LoginPageBase loginPage = new LoginPage(getDriver());
 
         softAssert.assertTrue(loginPage.isUsernameInputPresent(), "Username input isn't present!");
         softAssert.assertTrue(loginPage.isPasswordInputPresent(), "Password input isn't present!");
 
         loginPage.selectStandardUser();
-        MainPage mainPage = loginPage.clickLogin();
+        MainPageBase mainPage = loginPage.clickLoginButton();
 
         softAssert.assertTrue(mainPage.isTitlePresent(), "Title on main page isn't present!");
         softAssert.assertEquals(mainPage.getTitleText(), expectedTitle, "Title on main page isn't equals to expected.");
@@ -51,7 +52,7 @@ public class SwagLabsIOSTest implements IAbstractTest {
         String expectedDescription = "Sauce Labs Fleece Jacket It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office.";
         String expectedPrice = "$49.99";
 
-        ItemPage itemPage = mainPage.openItemPage(nameOfSelectedItem);
+        ItemPageBase itemPage = mainPage.clickOnItem(nameOfSelectedItem);
 
         softAssert.assertTrue(itemPage.isItemPicturePresent(), "Item picture isn't present!");
         softAssert.assertTrue(itemPage.isItemDescriptionPresent(), "Item description isn't present!");
@@ -94,31 +95,31 @@ public class SwagLabsIOSTest implements IAbstractTest {
         SoftAssert softAssert = new SoftAssert();
         String itemName = "Sauce Labs Backpack";
 
-        ItemPage itemPage = mainPage.openItemPage(itemName);
+        ItemPageBase itemPage = mainPage.clickOnItem(itemName);
         String expectedDescription = itemPage.getItemDescriptionText();
         String expectedPrice = itemPage.getItemPriceText();
 
         itemPage.addToCart();
         mainPage = itemPage.backToAllProducts();
-        CartPage cartPage = mainPage.openCartPage();
+        CartPageBase cartPage = mainPage.clickCartButton();
 
         softAssert.assertFalse(cartPage.getCartItems().isEmpty(), "Cart is empty.");
         softAssert.assertEquals(cartPage.getCartItems().size(), 1, "Count items in cart isn't equals to expected!");
 
-        CartItem cartItem = cartPage.findItem(expectedDescription);
+        CartItem cartItem = cartPage.getItem(expectedDescription);
         softAssert.assertEquals(cartItem.getTextFromPrice(), expectedPrice, "Price in cart isn't equals to expected");
 
-        CheckoutPage checkoutPage = cartPage.proceedToCheckout();
-        softAssert.assertTrue(checkoutPage.isFNameInputPresent(), "First name input isn't present on checkout page!");
-        softAssert.assertTrue(checkoutPage.isLNamePresent(), "Last name input isn't present on checkout page!");
+        CheckoutPageBase checkoutPage = cartPage.clickCheckoutButton();
+        softAssert.assertTrue(checkoutPage.isFirstNameInputPresent(), "First name input isn't present on checkout page!");
+        softAssert.assertTrue(checkoutPage.isLastNamePresent(), "Last name input isn't present on checkout page!");
         softAssert.assertTrue(checkoutPage.isZipCodeInputPresent(), "Zip code input isn't present on checkout page!");
 
-        checkoutPage.inputFName(R.TESTDATA.get("swagLabs_fName"));
-        checkoutPage.inputLName(R.TESTDATA.get("swagLabs_lName"));
-        checkoutPage.inputLName(R.TESTDATA.get("swagLabs_zipCode"));
-        OverviewPage overviewPage = checkoutPage.goToTheNextPage();
+        checkoutPage.inputFirstName(R.TESTDATA.get("swagLabs_fName"));
+        checkoutPage.inputLastName(R.TESTDATA.get("swagLabs_lName"));
+        checkoutPage.inputZipCode(R.TESTDATA.get("swagLabs_zipCode"));
+        OverviewPageBase overviewPage = checkoutPage.clickContinueButton();
 
-        CompletedOrderPage completedOrderPage = overviewPage.createOrder();
+        CompletedOrderPageBase completedOrderPage = overviewPage.clickFinishButton();
         softAssert.assertTrue(completedOrderPage.isOrderComplete(), "Order isn't create successfully");
 
         softAssert.assertAll();
@@ -127,15 +128,15 @@ public class SwagLabsIOSTest implements IAbstractTest {
     @Test
     public void verifyUserCanLogout() {
         SoftAssert softAssert = new SoftAssert();
-        LoginPage loginPage = new LoginPage(getDriver());
+        LoginPageBase loginPage = new LoginPage(getDriver());
 
         loginPage.selectStandardUser();
-        MainPage mainPage = loginPage.clickLogin();
+        MainPageBase mainPage = loginPage.clickLoginButton();
 
-        MenuPage menu = mainPage.openMenu();
+        MenuPageBase menu = mainPage.clickMenuButton();
         softAssert.assertTrue(menu.isLogoutButtonPresent(), "Logout button isn't present in menu!");
 
-        loginPage = menu.logout();
+        loginPage = menu.clickLogoutButton();
         softAssert.assertTrue(loginPage.isUsernameInputPresent(), "Username input isn't present - user isn't back to login page after logging out");
         softAssert.assertTrue(loginPage.isPasswordInputPresent(), "Password input isn't present - user isn't back to login page after logging out");
         softAssert.assertTrue(loginPage.isLoginButtonPresent(), "Login button isn't present - user isn't back to login page after logging out");
