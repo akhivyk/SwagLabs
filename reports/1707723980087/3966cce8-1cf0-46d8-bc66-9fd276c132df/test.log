@@ -10,7 +10,7 @@ org.openqa.selenium.support.decorators.WebDriverDecorator.call(WebDriverDecorato
 org.openqa.selenium.support.decorators.DefaultDecorated.call(DefaultDecorated.java:48)
 org.openqa.selenium.support.decorators.WebDriverDecorator.lambda$createProxy$0(WebDriverDecorator.java:309)
 net.bytebuddy.renamed.java.lang.Object$ByteBuddy$Cm0ZeVpN.quit(Unknown Source)
-com.solvd.carina.demo.swaglabs.SwagLabsIOSTest.off(SwagLabsIOSTest.java:28)
+com.solvd.carina.demo.swaglabs.SwagLabsTest.off(SwagLabsIOSTest.java:28)
 java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 java.base/java.lang.reflect.Method.invoke(Method.java:578)
 org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)

@@ -47,7 +47,7 @@ com.zebrunner.carina.webdriver.locator.ExtendedElementLocator.findElements(Exten
 com.zebrunner.carina.webdriver.locator.internal.AbstractUIObjectListHandler.invoke(AbstractUIObjectListHandler.java:82)
 jdk.proxy2/jdk.proxy2.$Proxy91.stream(Unknown Source)
 com.solvd.carina.demo.mobile.gui.pages.swaglabs.MainPage.findItemOnPage(MainPage.java:53)
-com.solvd.carina.demo.swaglabs.SwagLabsIOSTest.textChangesOnClickingCartButton(SwagLabsIOSTest.java:78)
+com.solvd.carina.demo.swaglabs.SwagLabsTest.textChangesOnClickingCartButton(SwagLabsIOSTest.java:78)
 java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 java.base/java.lang.reflect.Method.invoke(Method.java:578)
 org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)

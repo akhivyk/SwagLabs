@@ -25,7 +25,7 @@ com.zebrunner.carina.webdriver.decorator.ExtendedWebElement.click(ExtendedWebEle
 com.zebrunner.carina.webdriver.decorator.ExtendedWebElement.click(ExtendedWebElement.java:406)
 com.zebrunner.carina.webdriver.decorator.ExtendedWebElement.click(ExtendedWebElement.java:397)
 com.solvd.carina.demo.mobile.gui.pages.swaglabs.MenuPage.logout(MenuPage.java:27)
-com.solvd.carina.demo.swaglabs.SwagLabsIOSTest.verifyUserCanLogout(SwagLabsIOS.java:132)
+com.solvd.carina.demo.swaglabs.SwagLabsTest.verifyUserCanLogout(SwagLabsIOS.java:132)
 java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 java.base/java.lang.reflect.Method.invoke(Method.java:578)
 org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
