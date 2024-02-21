@@ -1,8 +1,0 @@
-[2024-02-12 07:57:11] [1] [WARN] Reporting disabled: using no op test run registrar
-[2024-02-12 07:57:11] [1] [INFO] TEST [SwagLabsCarinaBench - verifyItemPage] STARTED at [08:57:11 2024-02-12]
-[2024-02-12 07:57:11] [1] [INFO] Starting driver session...
-[2024-02-12 07:57:14] [1] [INFO] Driver session started.
-[2024-02-12 07:57:15] [1] [INFO] PASS: element 'selectCredentialsForStandardUserButton' is clicked.
-[2024-02-12 07:57:16] [1] [INFO] PASS: element 'loginButton' is clicked.
-[2024-02-12 07:57:22] [1] [INFO] PASS: element 'name' is clicked.
-[2024-02-12 07:57:24] [1] [INFO] TEST [SwagLabsCarinaBench - verifyItemPage] PASSED at [08:57:24 2024-02-12]
