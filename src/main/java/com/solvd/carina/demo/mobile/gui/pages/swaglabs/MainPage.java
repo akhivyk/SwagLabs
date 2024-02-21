@@ -1,26 +1,27 @@
 package com.solvd.carina.demo.mobile.gui.pages.swaglabs;
 
+import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.CartPageBase;
+import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.MainPageBase;
+import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.MenuPageBase;
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.components.Item;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import com.zebrunner.carina.webdriver.gui.AbstractPage;
-import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-
-
 
 import java.util.List;
 import java.util.NoSuchElementException;
 
-public class MainPage extends AbstractPage implements IMobileUtils {
+@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = CartPageBase.class)
+public class MainPage extends MainPageBase {
     @FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"PRODUCTS\"]")
-    private ExtendedWebElement title;
+    private ExtendedWebElement titleLabel;
 
     @FindBy(name = "test-Item")
     private List<Item> items;
 
     @FindBy(name = "test-Menu")
-    private ExtendedWebElement menu;
+    private ExtendedWebElement menuButton;
 
     @FindBy(name = "test-Cart")
     private ExtendedWebElement cartButton;
@@ -30,18 +31,18 @@ public class MainPage extends AbstractPage implements IMobileUtils {
     }
 
     public boolean isTitlePresent() {
-        return title.isElementPresent();
+        return titleLabel.isElementPresent();
     }
 
     public String getTitleText() {
-        return title.getText();
+        return titleLabel.getText();
     }
 
     public boolean isItemsListEmpty() {
         return items.isEmpty();
     }
 
-    public ItemPage openItemPage(String itemName) {
+    public ItemPage clickOnItem(String itemName) {
         return items.stream()
                 .filter(item -> itemName.equals(item.getName()))
                 .findFirst()
@@ -56,9 +57,9 @@ public class MainPage extends AbstractPage implements IMobileUtils {
                 .orElseThrow(() -> new NoSuchElementException("Item not found: " + itemName));
     }
 
-    public MenuPage openMenu() {
-        int x = (int) (menu.getLocation().getX() + menu.getSize().getWidth() * 0.54);
-        int y = (int) (menu.getLocation().getY() + menu.getSize().getHeight() * 0.9);
+    public MenuPageBase clickMenuButton() {
+        int x = (int) (menuButton.getLocation().getX() + menuButton.getSize().getWidth() * 0.54);
+        int y = (int) (menuButton.getLocation().getY() + menuButton.getSize().getHeight() * 0.9);
         tap(x, y);
         return new MenuPage(driver);
     }
@@ -67,7 +68,7 @@ public class MainPage extends AbstractPage implements IMobileUtils {
         return cartButton.getAttribute("label");
     }
 
-    public CartPage openCartPage() {
+    public CartPage clickCartButton() {
         int x = (int) (cartButton.getLocation().getX() + cartButton.getSize().getWidth() * 0.54);
         int y = (int) (cartButton.getLocation().getY() + cartButton.getSize().getHeight() * 0.9);
         tap(x, y);

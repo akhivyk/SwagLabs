@@ -1,11 +1,15 @@
 package com.solvd.carina.demo.mobile.gui.pages.swaglabs;
 
+import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.CartPageBase;
+import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.LoginPageBase;
+import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.MainPageBase;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class LoginPage extends AbstractPage {
+@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = CartPageBase.class)
+public class LoginPage extends LoginPageBase {
 
     @FindBy(xpath = "//XCUIElementTypeTextField[@name=\"test-Username\"]")
     private ExtendedWebElement usernameInput;
@@ -49,7 +53,7 @@ public class LoginPage extends AbstractPage {
         usernameInput.type(username);
     }
 
-    public MainPage clickLogin() {
+    public MainPageBase clickLoginButton() {
         loginButton.click();
         return new MainPage(driver);
     }
