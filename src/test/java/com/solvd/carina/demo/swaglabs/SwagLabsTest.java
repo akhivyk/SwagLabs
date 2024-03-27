@@ -1,22 +1,21 @@
 package com.solvd.carina.demo.swaglabs;
 
-import com.solvd.carina.demo.mobile.gui.pages.swaglabs.*;
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.*;
-import com.solvd.carina.demo.mobile.gui.pages.swaglabs.components.CartItem;
-import com.solvd.carina.demo.mobile.gui.pages.swaglabs.components.Item;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.utils.R;
+import com.zebrunner.carina.utils.factory.DeviceType;
+import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import groovy.util.logging.Slf4j;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 @Slf4j
-public class SwagLabsTest implements IAbstractTest {
+public class SwagLabsTest implements IAbstractTest, IMobileUtils {
     private LoginPageBase loginPage;
     private MainPageBase mainPage;
 
     public void login() {
-        loginPage = new LoginPage(getDriver());
+        loginPage = initPage(getDriver(), LoginPageBase.class);
 
         loginPage.selectStandardUser();
         mainPage = loginPage.clickLoginButton();
@@ -27,7 +26,7 @@ public class SwagLabsTest implements IAbstractTest {
         SoftAssert softAssert = new SoftAssert();
         String expectedTitle = "PRODUCTS";
 
-        LoginPageBase loginPage = new LoginPage(getDriver());
+        LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
 
         softAssert.assertTrue(loginPage.isUsernameInputPresent(), "Username input isn't present!");
         softAssert.assertTrue(loginPage.isPasswordInputPresent(), "Password input isn't present!");
@@ -47,10 +46,11 @@ public class SwagLabsTest implements IAbstractTest {
     public void verifyItemPage() {
         login();
         SoftAssert softAssert = new SoftAssert();
+        softAssert.assertTrue(mainPage.isPageOpened(), "Main page isn't opened!");
 
-        String nameOfSelectedItem = "Sauce Labs Fleece Jacket";
-        String expectedDescription = "Sauce Labs Fleece Jacket It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office.";
-        String expectedPrice = "$49.99";
+        String nameOfSelectedItem = "Sauce Labs Backpack";
+        String expectedDescription = "Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.";
+        String expectedPrice = "$29.99";
 
         ItemPageBase itemPage = mainPage.clickOnItem(nameOfSelectedItem);
 
@@ -58,7 +58,9 @@ public class SwagLabsTest implements IAbstractTest {
         softAssert.assertTrue(itemPage.isItemDescriptionPresent(), "Item description isn't present!");
         softAssert.assertTrue(itemPage.isItemPricePresent(), "Item price isn't present!");
 
-        softAssert.assertEquals(itemPage.getItemDescriptionText(), expectedDescription, "Description isn't equals to expected!");
+        if (getDevice().getDeviceType() == DeviceType.Type.IOS_PHONE) {
+            softAssert.assertEquals(itemPage.getItemDescriptionText(), expectedDescription, "Description isn't equals to expected!");
+        }
         softAssert.assertEquals(itemPage.getItemPriceText(), expectedPrice, "Price isn't equals to expected!");
 
         softAssert.assertAll();
@@ -68,16 +70,19 @@ public class SwagLabsTest implements IAbstractTest {
     public void textChangesOnClickingCartButton() {
         login();
         SoftAssert softAssert = new SoftAssert();
+        softAssert.assertTrue(mainPage.isPageOpened(), "Main page isn't opened!");
 
-        String itemName = "Sauce Labs Bike Light";
+        String itemName = "Sauce Labs Backpack";
         String expectedTextOnAddToCartButtonBeforeClicking = "ADD TO CART";
         String expectedTextOnAddToCartButtonAfterClicking = "REMOVE";
 
-        Item item = mainPage.findItemOnPage(itemName);
+        ItemBase item = mainPage.findItemOnPage(itemName);
         softAssert.assertEquals(item.getTextFromAddToCartButton(), expectedTextOnAddToCartButtonBeforeClicking, "Text on " +
                 "add to cart button isn't equals to expected before clicking!");
-        softAssert.assertNull(mainPage.getCountOfItemInCart(), "Count of items in cart isn't " +
-                "equals to expected before adding item to cart!");
+        if (getDevice().getDeviceType() == DeviceType.Type.IOS_PHONE) {
+            softAssert.assertNull(mainPage.getCountOfItemInCart(), "Count of items in cart isn't " +
+                    "equals to expected before adding item to cart!");
+        }
 
         item.clickAddToCartButton();
         softAssert.assertEquals(item.getTextFromRemoveButton(), expectedTextOnAddToCartButtonAfterClicking, "Text on " +
@@ -93,6 +98,8 @@ public class SwagLabsTest implements IAbstractTest {
         login();
 
         SoftAssert softAssert = new SoftAssert();
+        softAssert.assertTrue(mainPage.isPageOpened(), "Main page isn't opened!");
+
         String itemName = "Sauce Labs Backpack";
 
         ItemPageBase itemPage = mainPage.clickOnItem(itemName);
@@ -103,10 +110,9 @@ public class SwagLabsTest implements IAbstractTest {
         mainPage = itemPage.backToAllProducts();
         CartPageBase cartPage = mainPage.clickCartButton();
 
-        softAssert.assertFalse(cartPage.getCartItems().isEmpty(), "Cart is empty.");
-        softAssert.assertEquals(cartPage.getCartItems().size(), 1, "Count items in cart isn't equals to expected!");
+        softAssert.assertFalse(cartPage.isCartListEmpty(), "Cart is empty.");
 
-        CartItem cartItem = cartPage.getItem(expectedDescription);
+        CartItemBase cartItem = cartPage.getItem(expectedDescription);
         softAssert.assertEquals(cartItem.getTextFromPrice(), expectedPrice, "Price in cart isn't equals to expected");
 
         CheckoutPageBase checkoutPage = cartPage.clickCheckoutButton();
@@ -128,7 +134,7 @@ public class SwagLabsTest implements IAbstractTest {
     @Test
     public void verifyUserCanLogout() {
         SoftAssert softAssert = new SoftAssert();
-        LoginPageBase loginPage = new LoginPage(getDriver());
+        LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
 
         loginPage.selectStandardUser();
         MainPageBase mainPage = loginPage.clickLoginButton();

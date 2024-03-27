@@ -1,15 +1,16 @@
-package com.solvd.carina.demo.mobile.gui.pages.swaglabs.components;
+package com.solvd.carina.demo.mobile.gui.pages.swaglabs.ios.components;
 
-import com.solvd.carina.demo.mobile.gui.pages.swaglabs.ItemPage;
+import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.ItemBase;
+import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.ItemPageBase;
+import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
 import groovy.transform.ToString;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 @ToString
-public class Item extends AbstractUIObject {
+public class Item extends ItemBase implements ICustomTypePageFactory {
     @FindBy(name = "test-Item title")
     private ExtendedWebElement name;
 
@@ -26,12 +27,12 @@ public class Item extends AbstractUIObject {
         super(driver, searchContext);
     }
 
-    public ItemPage clickOnName() {
+    public ItemPageBase clickOnName() {
         name.click();
-        return new ItemPage(driver);
+        return initPage(getDriver(), ItemPageBase.class);
     }
 
-    public String getName() {
+    public String getElementName() {
         return name.getText();
     }
 

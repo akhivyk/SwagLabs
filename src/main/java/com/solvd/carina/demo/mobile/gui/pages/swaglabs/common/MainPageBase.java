@@ -1,6 +1,5 @@
 package com.solvd.carina.demo.mobile.gui.pages.swaglabs.common;
 
-import com.solvd.carina.demo.mobile.gui.pages.swaglabs.components.Item;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
@@ -12,13 +11,15 @@ public abstract class MainPageBase extends AbstractPage implements IMobileUtils 
 
     public abstract boolean isTitlePresent();
 
+    public abstract boolean isPageOpened();
+
     public abstract String getTitleText();
 
     public abstract boolean isItemsListEmpty();
 
     public abstract ItemPageBase clickOnItem(String itemName);
 
-    public abstract Item findItemOnPage(String itemName);
+    public abstract ItemBase findItemOnPage(String itemName);
 
     public abstract MenuPageBase clickMenuButton();
 

@@ -1,16 +1,16 @@
-package com.solvd.carina.demo.mobile.gui.pages.swaglabs;
+package com.solvd.carina.demo.mobile.gui.pages.swaglabs.android;
 
-import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.CartPageBase;
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.CompletedOrderPageBase;
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.OverviewPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
+import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = CartPageBase.class)
-public class OverviewPage extends OverviewPageBase {
-    @FindBy(name = "test-FINISH")
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = OverviewPageBase.class)
+public class OverviewPage extends OverviewPageBase implements IMobileUtils {
+    @FindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-FINISH\"]")
     private ExtendedWebElement finishButton;
 
     public OverviewPage(WebDriver driver) {
@@ -18,7 +18,9 @@ public class OverviewPage extends OverviewPageBase {
     }
 
     public CompletedOrderPageBase clickFinishButton() {
+        swipe(finishButton, 2);
+
         finishButton.click();
-        return new CompletedOrderPage(driver);
+        return initPage(getDriver(), CompletedOrderPageBase.class);
     }
 }
