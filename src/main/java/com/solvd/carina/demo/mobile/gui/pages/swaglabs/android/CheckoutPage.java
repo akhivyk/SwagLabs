@@ -1,25 +1,26 @@
-package com.solvd.carina.demo.mobile.gui.pages.swaglabs;
+package com.solvd.carina.demo.mobile.gui.pages.swaglabs.android;
 
-import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.CartPageBase;
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.CheckoutPageBase;
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.OverviewPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
+import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = CartPageBase.class)
-public class CheckoutPage extends CheckoutPageBase {
-    @FindBy(name = "test-First Name")
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = CheckoutPageBase.class)
+public class CheckoutPage extends CheckoutPageBase implements IMobileUtils {
+
+    @FindBy(xpath = "//android.widget.EditText[@content-desc=\"test-First Name\"]")
     private ExtendedWebElement firstNameInput;
 
-    @FindBy(name = "test-Last Name")
+    @FindBy(xpath = "//android.widget.EditText[@content-desc=\"test-Last Name\"]")
     private ExtendedWebElement lastNameInput;
 
-    @FindBy(name = "test-Zip/Postal Code")
+    @FindBy(xpath = "//android.widget.EditText[@content-desc=\"test-Zip/Postal Code\"]")
     private ExtendedWebElement zipCodeInput;
 
-    @FindBy(name = "test-CONTINUE")
+    @FindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-CONTINUE\"]")
     private ExtendedWebElement continueButton;
 
     public CheckoutPage(WebDriver driver) {
@@ -40,7 +41,7 @@ public class CheckoutPage extends CheckoutPageBase {
 
     public OverviewPageBase clickContinueButton() {
         continueButton.click();
-        return new OverviewPage(driver);
+        return initPage(getDriver(), OverviewPageBase.class);
     }
 
     public void inputFirstName(String firstName) {
