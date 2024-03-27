@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = CompletedOrderPageBase.class)
 public class CompletedOrderPage extends CompletedOrderPageBase {
+
     @FindBy(name = "THANK YOU FOR YOU ORDER")
     private ExtendedWebElement completedOrderLabel;
 

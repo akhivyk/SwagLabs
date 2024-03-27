@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = OverviewPageBase.class)
 public class OverviewPage extends OverviewPageBase {
+
     @FindBy(name = "test-FINISH")
     private ExtendedWebElement finishButton;
 

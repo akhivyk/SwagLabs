@@ -13,6 +13,7 @@ import java.util.NoSuchElementException;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = CartPageBase.class)
 public class CartPage extends CartPageBase {
+
     @FindBy(name = "test-Item")
     private List<CartItem> cartItems;
 

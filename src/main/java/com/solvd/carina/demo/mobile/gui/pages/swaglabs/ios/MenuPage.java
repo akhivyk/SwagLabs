@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = MenuPageBase.class)
 public class MenuPage extends MenuPageBase {
+
     @FindBy(name = "test-LOGOUT")
     private ExtendedWebElement logoutButton;
 

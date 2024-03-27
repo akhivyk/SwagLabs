@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 public class CartItem extends CartItemBase {
+
     @FindBy(name = "test-Description")
     private ExtendedWebElement description;
 

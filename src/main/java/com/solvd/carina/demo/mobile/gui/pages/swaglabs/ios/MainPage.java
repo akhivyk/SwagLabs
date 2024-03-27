@@ -15,6 +15,7 @@ import java.util.NoSuchElementException;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = MainPageBase.class)
 public class MainPage extends MainPageBase {
+
     public static final String PAGE_TITLE = "PRODUCTS";
 
     @FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"PRODUCTS\"]")

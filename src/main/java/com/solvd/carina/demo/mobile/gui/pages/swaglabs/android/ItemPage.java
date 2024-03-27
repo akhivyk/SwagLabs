@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = ItemPageBase.class)
 public class ItemPage extends ItemPageBase {
+
     @FindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-Image Container\"]")
     private ExtendedWebElement itemPicture;
 
@@ -32,15 +33,15 @@ public class ItemPage extends ItemPageBase {
     }
 
     public boolean isItemPicturePresent() {
-        return itemPicture.isElementPresent(1);
+        return itemPicture.isElementPresent();
     }
 
     public boolean isItemDescriptionPresent() {
-        return itemDescription.isPresent(1);
+        return itemDescription.isPresent();
     }
 
     public boolean isItemPricePresent() {
-        return itemPrice.isElementPresent(1);
+        return itemPrice.isElementPresent();
     }
 
     public String getItemDescriptionText() {

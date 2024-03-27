@@ -16,6 +16,7 @@ import java.util.NoSuchElementException;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = MainPageBase.class)
 public class MainPage extends MainPageBase {
+
     public static final String PAGE_TITLE = "PRODUCTS";
 
     @FindBy(xpath = "//android.widget.TextView[@text=\"PRODUCTS\"]")

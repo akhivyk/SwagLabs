@@ -5,6 +5,7 @@ import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 
 public abstract class MainPageBase extends AbstractPage implements IMobileUtils {
+
     public MainPageBase(WebDriver driver) {
         super(driver);
     }

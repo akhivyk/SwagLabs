@@ -11,6 +11,7 @@ import org.openqa.selenium.support.FindBy;
 
 @ToString
 public class Item extends ItemBase implements ICustomTypePageFactory {
+
     @FindBy(name = "test-Item title")
     private ExtendedWebElement name;
 

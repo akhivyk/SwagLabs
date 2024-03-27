@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = ItemPageBase.class)
 public class ItemPage extends ItemPageBase {
+
     @FindBy(name = "test-Image Container")
     private ExtendedWebElement itemPicture;
 

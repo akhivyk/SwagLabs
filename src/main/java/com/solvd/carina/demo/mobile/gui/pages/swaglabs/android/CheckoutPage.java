@@ -10,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = CheckoutPageBase.class)
 public class CheckoutPage extends CheckoutPageBase implements IMobileUtils {
+
     @FindBy(xpath = "//android.widget.EditText[@content-desc=\"test-First Name\"]")
     private ExtendedWebElement firstNameInput;
 

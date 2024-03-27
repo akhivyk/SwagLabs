@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = CheckoutPageBase.class)
 public class CheckoutPage extends CheckoutPageBase {
+
     @FindBy(name = "test-First Name")
     private ExtendedWebElement firstNameInput;
 

@@ -10,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = OverviewPageBase.class)
 public class OverviewPage extends OverviewPageBase implements IMobileUtils {
+
     @FindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-FINISH\"]")
     private ExtendedWebElement finishButton;
 

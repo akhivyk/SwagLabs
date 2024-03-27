@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = CompletedOrderPageBase.class)
 public class CompletedOrderPage extends CompletedOrderPageBase {
+
     @FindBy(xpath = "//android.widget.ScrollView[@content-desc=\"test-CHECKOUT: COMPLETE!\"]")
     private ExtendedWebElement completedOrderLabel;
 

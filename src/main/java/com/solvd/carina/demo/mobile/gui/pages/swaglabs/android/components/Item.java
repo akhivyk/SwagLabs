@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 public class Item extends ItemBase implements ICustomTypePageFactory {
+
     @FindBy(xpath = "//android.widget.TextView[@content-desc=\"test-Item title\"]")
     private ExtendedWebElement name;
 

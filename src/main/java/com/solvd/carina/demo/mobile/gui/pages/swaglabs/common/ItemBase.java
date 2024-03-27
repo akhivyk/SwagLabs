@@ -5,6 +5,7 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 
 public abstract class ItemBase extends AbstractUIObject {
+
     public ItemBase(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
