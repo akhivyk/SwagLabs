@@ -19,7 +19,7 @@ public abstract class ItemPageBase extends AbstractPage {
 
     public abstract String getItemPriceText();
 
-    public abstract void addToCart();
+    public abstract void clickAddToCartButton();
 
-    public abstract MainPageBase backToAllProducts();
+    public abstract MainPageBase clickBackToAllProductsButton();
 }

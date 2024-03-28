@@ -1,6 +1,6 @@
 package com.solvd.carina.demo.mobile.gui.pages.swaglabs.android.components;
 
-import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.CartItemBase;
+import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.components.CartItemBase;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;

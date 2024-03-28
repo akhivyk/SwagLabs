@@ -1,6 +1,6 @@
 package com.solvd.carina.demo.mobile.gui.pages.swaglabs.android;
 
-import com.solvd.carina.demo.mobile.gui.pages.swaglabs.UserType;
+import com.solvd.carina.demo.mobile.gui.pages.swaglabs.enums.UserType;
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.LoginPageBase;
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.MainPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;

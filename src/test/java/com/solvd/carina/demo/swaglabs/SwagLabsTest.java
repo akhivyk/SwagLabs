@@ -1,11 +1,12 @@
 package com.solvd.carina.demo.swaglabs;
 
-import com.solvd.carina.demo.mobile.gui.pages.swaglabs.LoginUtil;
-import com.solvd.carina.demo.mobile.gui.pages.swaglabs.UserType;
+import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.components.CartItemBase;
+import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.components.ItemBase;
+import com.solvd.carina.demo.mobile.gui.pages.swaglabs.utils.LoginUtil;
+import com.solvd.carina.demo.mobile.gui.pages.swaglabs.enums.UserType;
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.*;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.utils.R;
-import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import groovy.util.logging.Slf4j;
 import org.testng.Assert;
@@ -41,7 +42,7 @@ public class SwagLabsTest implements IAbstractTest, IMobileUtils {
         Assert.assertTrue(mainPage.isPageOpened(), "Main page isn't opened!");
 
         String nameOfSelectedItem = "Sauce Labs Backpack";
-        String expectedDescription = "Sauce Labs Backpack carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.";
+        String expectedDescription = "carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.";
         String expectedPrice = "$29.99";
 
         ItemPageBase itemPage = mainPage.clickOnItem(nameOfSelectedItem);
@@ -50,9 +51,7 @@ public class SwagLabsTest implements IAbstractTest, IMobileUtils {
         Assert.assertTrue(itemPage.isItemDescriptionPresent(), "Item description isn't present!");
         Assert.assertTrue(itemPage.isItemPricePresent(), "Item price isn't present!");
 
-        if (getDevice().getDeviceType() == DeviceType.Type.IOS_PHONE) {
-            Assert.assertEquals(itemPage.getItemDescriptionText(), expectedDescription, "Description isn't equals to expected!");
-        }
+        Assert.assertEquals(itemPage.getItemDescriptionText(), expectedDescription, "Description isn't equals to expected!");
         Assert.assertEquals(itemPage.getItemPriceText(), expectedPrice, "Price isn't equals to expected!");
     }
 
@@ -89,8 +88,8 @@ public class SwagLabsTest implements IAbstractTest, IMobileUtils {
         String expectedDescription = itemPage.getItemDescriptionText();
         String expectedPrice = itemPage.getItemPriceText();
 
-        itemPage.addToCart();
-        mainPage = itemPage.backToAllProducts();
+        itemPage.clickAddToCartButton();
+        mainPage = itemPage.clickBackToAllProductsButton();
         CartPageBase cartPage = mainPage.clickCartButton();
 
         Assert.assertFalse(cartPage.isCartListEmpty(), "Cart is empty.");

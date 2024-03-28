@@ -1,5 +1,6 @@
 package com.solvd.carina.demo.mobile.gui.pages.swaglabs.common;
 
+import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.components.ItemBase;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;

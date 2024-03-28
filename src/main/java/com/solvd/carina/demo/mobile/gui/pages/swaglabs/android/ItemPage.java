@@ -52,11 +52,11 @@ public class ItemPage extends ItemPageBase {
         return itemPrice.getText();
     }
 
-    public void addToCart() {
+    public void clickAddToCartButton() {
         addToCartButton.click();
     }
 
-    public MainPageBase backToAllProducts() {
+    public MainPageBase clickBackToAllProductsButton() {
         backToAllProductsButton.click();
         return initPage(getDriver(), MainPageBase.class);
     }

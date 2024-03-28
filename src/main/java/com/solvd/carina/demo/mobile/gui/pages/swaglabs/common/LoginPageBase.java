@@ -1,6 +1,6 @@
 package com.solvd.carina.demo.mobile.gui.pages.swaglabs.common;
 
-import com.solvd.carina.demo.mobile.gui.pages.swaglabs.UserType;
+import com.solvd.carina.demo.mobile.gui.pages.swaglabs.enums.UserType;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 

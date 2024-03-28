@@ -1,6 +1,6 @@
 package com.solvd.carina.demo.mobile.gui.pages.swaglabs.android.components;
 
-import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.ItemBase;
+import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.components.ItemBase;
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.ItemPageBase;
 import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -28,7 +28,7 @@ public class Item extends ItemBase implements ICustomTypePageFactory {
 
     public ItemPageBase clickOnName() {
         name.click();
-        return initPage(getDriver(), ItemPageBase.class);
+        return initPage(ItemPageBase.class);
     }
 
     public String getElementName() {

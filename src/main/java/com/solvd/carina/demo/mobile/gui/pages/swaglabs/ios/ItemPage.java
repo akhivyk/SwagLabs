@@ -4,6 +4,7 @@ import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.ItemPageBase;
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.MainPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
@@ -13,7 +14,7 @@ public class ItemPage extends ItemPageBase {
     @FindBy(name = "test-Image Container")
     private ExtendedWebElement itemPicture;
 
-    @FindBy(name = "test-Description")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name == \"test-Description\"`]/**/XCUIElementTypeStaticText[2]")
     private ExtendedWebElement itemDescription;
 
     @FindBy(name = "test-Price")
@@ -49,11 +50,11 @@ public class ItemPage extends ItemPageBase {
         return itemPrice.getText();
     }
 
-    public void addToCart() {
+    public void clickAddToCartButton() {
         addToCartButton.click();
     }
 
-    public MainPageBase backToAllProducts() {
+    public MainPageBase clickBackToAllProductsButton() {
         backToAllProductsButton.click();
         return initPage(getDriver(), MainPageBase.class);
     }

@@ -1,13 +1,12 @@
 package com.solvd.carina.demo.mobile.gui.pages.swaglabs.ios;
 
-import com.solvd.carina.demo.mobile.gui.pages.swaglabs.UserType;
+import com.solvd.carina.demo.mobile.gui.pages.swaglabs.enums.UserType;
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.LoginPageBase;
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.MainPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = LoginPageBase.class)
 public class LoginPage extends LoginPageBase {

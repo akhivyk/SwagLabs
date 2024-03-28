@@ -1,4 +1,4 @@
-package com.solvd.carina.demo.mobile.gui.pages.swaglabs;
+package com.solvd.carina.demo.mobile.gui.pages.swaglabs.enums;
 
 public enum UserType {
     STANDARD_USER("standard_user"),
