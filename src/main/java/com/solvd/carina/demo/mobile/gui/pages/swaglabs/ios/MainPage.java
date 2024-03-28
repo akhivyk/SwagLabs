@@ -7,6 +7,7 @@ import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.MenuPageBase;
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.ios.components.Item;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
@@ -18,7 +19,7 @@ public class MainPage extends MainPageBase {
 
     public static final String PAGE_TITLE = "PRODUCTS";
 
-    @FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"PRODUCTS\"]")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`name == \"PRODUCTS\"`]")
     private ExtendedWebElement titleLabel;
 
     @FindBy(name = "test-Item")
@@ -51,8 +52,9 @@ public class MainPage extends MainPageBase {
     }
 
     public ItemPageBase clickOnItem(String itemName) {
+        items.forEach(a ->System.out.println(a.getElementName()));
         return items.stream()
-                .filter(item -> itemName.equals(item.getName()))
+                .filter(item -> itemName.equalsIgnoreCase(item.getElementName()))
                 .findFirst()
                 .map(Item::clickOnName)
                 .orElseThrow(() -> new NoSuchElementException("Item not found: " + itemName));
@@ -60,7 +62,7 @@ public class MainPage extends MainPageBase {
 
     public Item findItemOnPage(String itemName) {
         return items.stream()
-                .filter(item -> itemName.equals(item.getName()))
+                .filter(item -> itemName.equalsIgnoreCase(item.getElementName()))
                 .findFirst()
                 .orElseThrow(() -> new NoSuchElementException("Item not found: " + itemName));
     }

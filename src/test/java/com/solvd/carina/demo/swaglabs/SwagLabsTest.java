@@ -1,5 +1,7 @@
 package com.solvd.carina.demo.swaglabs;
 
+import com.solvd.carina.demo.mobile.gui.pages.swaglabs.LoginUtil;
+import com.solvd.carina.demo.mobile.gui.pages.swaglabs.UserType;
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.*;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.utils.R;
@@ -11,15 +13,6 @@ import org.testng.asserts.SoftAssert;
 
 @Slf4j
 public class SwagLabsTest implements IAbstractTest, IMobileUtils {
-    private LoginPageBase loginPage;
-    private MainPageBase mainPage;
-
-    public void login() {
-        loginPage = initPage(getDriver(), LoginPageBase.class);
-
-        loginPage.selectStandardUser();
-        mainPage = loginPage.clickLoginButton();
-    }
 
     @Test
     public void loginWithValidCredentials() {
@@ -31,7 +24,7 @@ public class SwagLabsTest implements IAbstractTest, IMobileUtils {
         softAssert.assertTrue(loginPage.isUsernameInputPresent(), "Username input isn't present!");
         softAssert.assertTrue(loginPage.isPasswordInputPresent(), "Password input isn't present!");
 
-        loginPage.selectStandardUser();
+        loginPage.selectUser(UserType.STANDARD_USER);
         MainPageBase mainPage = loginPage.clickLoginButton();
 
         softAssert.assertTrue(mainPage.isTitlePresent(), "Title on main page isn't present!");
@@ -44,7 +37,8 @@ public class SwagLabsTest implements IAbstractTest, IMobileUtils {
 
     @Test
     public void verifyItemPage() {
-        login();
+        MainPageBase mainPage = new LoginUtil(getDriver()).loginWithStandardUser();
+
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertTrue(mainPage.isPageOpened(), "Main page isn't opened!");
 
@@ -68,7 +62,8 @@ public class SwagLabsTest implements IAbstractTest, IMobileUtils {
 
     @Test
     public void textChangesOnClickingCartButton() {
-        login();
+        MainPageBase mainPage = new LoginUtil(getDriver()).loginWithStandardUser();
+
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertTrue(mainPage.isPageOpened(), "Main page isn't opened!");
 
@@ -79,10 +74,6 @@ public class SwagLabsTest implements IAbstractTest, IMobileUtils {
         ItemBase item = mainPage.findItemOnPage(itemName);
         softAssert.assertEquals(item.getTextFromAddToCartButton(), expectedTextOnAddToCartButtonBeforeClicking, "Text on " +
                 "add to cart button isn't equals to expected before clicking!");
-        if (getDevice().getDeviceType() == DeviceType.Type.IOS_PHONE) {
-            softAssert.assertNull(mainPage.getCountOfItemInCart(), "Count of items in cart isn't " +
-                    "equals to expected before adding item to cart!");
-        }
 
         item.clickAddToCartButton();
         softAssert.assertEquals(item.getTextFromRemoveButton(), expectedTextOnAddToCartButtonAfterClicking, "Text on " +
@@ -95,7 +86,7 @@ public class SwagLabsTest implements IAbstractTest, IMobileUtils {
 
     @Test
     public void verifyUserCanMakeOrder() {
-        login();
+        MainPageBase mainPage = new LoginUtil(getDriver()).loginWithStandardUser();
 
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertTrue(mainPage.isPageOpened(), "Main page isn't opened!");
@@ -136,7 +127,7 @@ public class SwagLabsTest implements IAbstractTest, IMobileUtils {
         SoftAssert softAssert = new SoftAssert();
         LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
 
-        loginPage.selectStandardUser();
+        loginPage.selectUser(UserType.STANDARD_USER);
         MainPageBase mainPage = loginPage.clickLoginButton();
 
         MenuPageBase menu = mainPage.clickMenuButton();

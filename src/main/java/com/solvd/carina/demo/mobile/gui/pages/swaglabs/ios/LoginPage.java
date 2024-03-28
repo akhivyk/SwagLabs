@@ -1,32 +1,28 @@
 package com.solvd.carina.demo.mobile.gui.pages.swaglabs.ios;
 
+import com.solvd.carina.demo.mobile.gui.pages.swaglabs.UserType;
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.LoginPageBase;
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.MainPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = LoginPageBase.class)
 public class LoginPage extends LoginPageBase {
 
-    @FindBy(xpath = "//XCUIElementTypeTextField[@name=\"test-Username\"]")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeTextField[`name == \"test-Username\"`]")
     private ExtendedWebElement usernameInput;
 
-    @FindBy(xpath = "//XCUIElementTypeSecureTextField[@name=\"test-Password\"]")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeSecureTextField[`name == \"test-Password\"`]")
     private ExtendedWebElement passwordInput;
 
-    @FindBy(xpath = "//XCUIElementTypeOther[@name=\"test-LOGIN\"]")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name == \"test-LOGIN\"`]")
     private ExtendedWebElement loginButton;
 
-    @FindBy(xpath = "//XCUIElementTypeOther[@name=\"test-standard_user\"]")
-    private ExtendedWebElement selectCredentialsForStandardUserButton;
-
-    @FindBy(xpath = "//XCUIElementTypeOther[@name=\"test-locked_out_user\"]")
-    private ExtendedWebElement selectCredentialsForLockedOutUserButton;
-
-    @FindBy(xpath = "//XCUIElementTypeOther[@name=\"test-problem_user\"]")
-    private ExtendedWebElement selectCredentialsForProblemUserButton;
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name == \"test-%s\"`]")
+    private ExtendedWebElement selectUserCredentialsButton;
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -57,15 +53,7 @@ public class LoginPage extends LoginPageBase {
         return initPage(getDriver(), MainPageBase.class);
     }
 
-    public void selectStandardUser() {
-        selectCredentialsForStandardUserButton.click();
-    }
-
-    public void selectLoggedOutUser() {
-        selectCredentialsForLockedOutUserButton.click();
-    }
-
-    public void selectProblemUser() {
-        selectCredentialsForProblemUserButton.click();
+    public void selectUser(UserType userType) {
+        selectUserCredentialsButton.format(userType.getUsername()).click();
     }
 }

@@ -1,5 +1,6 @@
 package com.solvd.carina.demo.mobile.gui.pages.swaglabs.android;
 
+import com.solvd.carina.demo.mobile.gui.pages.swaglabs.UserType;
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.LoginPageBase;
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.MainPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
@@ -19,14 +20,8 @@ public class LoginPage extends LoginPageBase {
     @FindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-LOGIN\"]")
     private ExtendedWebElement loginButton;
 
-    @FindBy(xpath = "//android.widget.TextView[@text=\"standard_user\"]")
-    private ExtendedWebElement selectCredentialsForStandardUserButton;
-
-    @FindBy(xpath = "//android.widget.TextView[@text=\"locked_out_user\"]")
-    private ExtendedWebElement selectCredentialsForLockedOutUserButton;
-
-    @FindBy(xpath = "//android.widget.TextView[@text=\"problem_user\"]")
-    private ExtendedWebElement selectCredentialsForProblemUserButton;
+    @FindBy(xpath = "//android.widget.TextView[@text=\"%s\"]")
+    private ExtendedWebElement selectUserCredentialsButton;
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -57,15 +52,7 @@ public class LoginPage extends LoginPageBase {
         return initPage(getDriver(), MainPageBase.class);
     }
 
-    public void selectStandardUser() {
-        selectCredentialsForStandardUserButton.click();
-    }
-
-    public void selectLoggedOutUser() {
-        selectCredentialsForLockedOutUserButton.click();
-    }
-
-    public void selectProblemUser() {
-        selectCredentialsForProblemUserButton.click();
+    public void selectUser(UserType userType) {
+        selectUserCredentialsButton.format(userType.getUsername()).click();
     }
 }
