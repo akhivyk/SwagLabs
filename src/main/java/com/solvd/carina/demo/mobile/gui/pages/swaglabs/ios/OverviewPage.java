@@ -4,13 +4,13 @@ import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.CompletedOrderPage
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.OverviewPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = OverviewPageBase.class)
 public class OverviewPage extends OverviewPageBase {
 
-    @FindBy(name = "test-FINISH")
+    @ExtendedFindBy(accessibilityId = "test-FINISH")
     private ExtendedWebElement finishButton;
 
     public OverviewPage(WebDriver driver) {

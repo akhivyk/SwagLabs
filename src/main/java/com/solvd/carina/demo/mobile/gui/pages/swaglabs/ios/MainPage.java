@@ -9,7 +9,6 @@ import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -20,13 +19,13 @@ public class MainPage extends MainPageBase {
     @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`label == \"PRODUCTS\"`]")
     private ExtendedWebElement titleLabel;
 
-    @FindBy(name = "test-Item")
+    @ExtendedFindBy(accessibilityId = "test-Item")
     private List<Item> items;
 
-    @FindBy(name = "test-Menu")
+    @ExtendedFindBy(accessibilityId = "test-Menu")
     private ExtendedWebElement menuButton;
 
-    @FindBy(name = "test-Cart")
+    @ExtendedFindBy(accessibilityId = "test-Cart")
     private ExtendedWebElement cartButton;
 
     public MainPage(WebDriver driver) {

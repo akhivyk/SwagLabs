@@ -4,22 +4,22 @@ import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.CheckoutPageBase;
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.OverviewPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = CheckoutPageBase.class)
 public class CheckoutPage extends CheckoutPageBase {
 
-    @FindBy(name = "test-First Name")
+    @ExtendedFindBy(accessibilityId = "test-First Name")
     private ExtendedWebElement firstNameInput;
 
-    @FindBy(name = "test-Last Name")
+    @ExtendedFindBy(accessibilityId = "test-Last Name")
     private ExtendedWebElement lastNameInput;
 
-    @FindBy(name = "test-Zip/Postal Code")
+    @ExtendedFindBy(accessibilityId = "test-Zip/Postal Code")
     private ExtendedWebElement zipCodeInput;
 
-    @FindBy(name = "test-CONTINUE")
+    @ExtendedFindBy(accessibilityId = "test-CONTINUE")
     private ExtendedWebElement continueButton;
 
     public CheckoutPage(WebDriver driver) {

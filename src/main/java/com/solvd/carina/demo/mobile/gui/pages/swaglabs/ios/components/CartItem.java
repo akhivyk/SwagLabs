@@ -2,16 +2,16 @@ package com.solvd.carina.demo.mobile.gui.pages.swaglabs.ios.components;
 
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.components.CartItemBase;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 
 public class CartItem extends CartItemBase {
 
-    @FindBy(name = "test-Description")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name == \"test-Description\"`]/**/XCUIElementTypeStaticText[2]")
     private ExtendedWebElement description;
 
-    @FindBy(name = "test-Price")
+    @ExtendedFindBy(accessibilityId = "test-Price")
     private ExtendedWebElement price;
 
     public CartItem(WebDriver driver, SearchContext searchContext) {
