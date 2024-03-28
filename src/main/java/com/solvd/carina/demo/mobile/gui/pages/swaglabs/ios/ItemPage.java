@@ -1,28 +1,28 @@
-package com.solvd.carina.demo.mobile.gui.pages.swaglabs;
+package com.solvd.carina.demo.mobile.gui.pages.swaglabs.ios;
 
-import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.CartPageBase;
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.ItemPageBase;
 import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.MainPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 
-@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = CartPageBase.class)
+@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = ItemPageBase.class)
 public class ItemPage extends ItemPageBase {
-    @FindBy(name = "test-Image Container")
+
+    @ExtendedFindBy(accessibilityId = "test-Image Container")
     private ExtendedWebElement itemPicture;
 
-    @FindBy(name = "test-Description")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeOther[`name == \"test-Description\"`]/**/XCUIElementTypeStaticText[2]")
     private ExtendedWebElement itemDescription;
 
-    @FindBy(name = "test-Price")
+    @ExtendedFindBy(accessibilityId = "test-Price")
     private ExtendedWebElement itemPrice;
 
-    @FindBy(name = "test-ADD TO CART")
+    @ExtendedFindBy(accessibilityId = "test-ADD TO CART")
     private ExtendedWebElement addToCartButton;
 
-    @FindBy(name = "test-BACK TO PRODUCTS")
+    @ExtendedFindBy(accessibilityId = "test-BACK TO PRODUCTS")
     private ExtendedWebElement backToAllProductsButton;
 
     public ItemPage(WebDriver driver) {
@@ -49,12 +49,12 @@ public class ItemPage extends ItemPageBase {
         return itemPrice.getText();
     }
 
-    public void addToCart() {
+    public void clickAddToCartButton() {
         addToCartButton.click();
     }
 
-    public MainPageBase backToAllProducts() {
+    public MainPageBase clickBackToAllProductsButton() {
         backToAllProductsButton.click();
-        return new MainPage(driver);
+        return initPage(getDriver(), MainPageBase.class);
     }
 }

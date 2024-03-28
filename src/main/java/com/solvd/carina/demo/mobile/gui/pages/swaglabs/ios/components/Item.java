@@ -1,37 +1,40 @@
-package com.solvd.carina.demo.mobile.gui.pages.swaglabs.components;
+package com.solvd.carina.demo.mobile.gui.pages.swaglabs.ios.components;
 
-import com.solvd.carina.demo.mobile.gui.pages.swaglabs.ItemPage;
+import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.ItemPageBase;
+import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.components.ItemBase;
+import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
+import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
 import groovy.transform.ToString;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 @ToString
-public class Item extends AbstractUIObject {
-    @FindBy(name = "test-Item title")
+public class Item extends ItemBase implements ICustomTypePageFactory {
+
+    @ExtendedFindBy(accessibilityId = "test-Item title")
     private ExtendedWebElement name;
 
-    @FindBy(name = "test-Price")
+    @ExtendedFindBy(accessibilityId = "test-Price")
     private ExtendedWebElement price;
 
-    @FindBy(name = "test-ADD TO CART")
+    @ExtendedFindBy(accessibilityId = "test-ADD TO CART")
     private ExtendedWebElement addToCartButton;
 
-    @FindBy(name = "test-REMOVE")
+    @ExtendedFindBy(accessibilityId = "test-REMOVE")
     private ExtendedWebElement removeFromCartButton;
 
     public Item(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
-    public ItemPage clickOnName() {
+    public ItemPageBase clickOnName() {
         name.click();
-        return new ItemPage(driver);
+        return initPage(ItemPageBase.class);
     }
 
-    public String getName() {
+    public String getElementName() {
         return name.getText();
     }
 
