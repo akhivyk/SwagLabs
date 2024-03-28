@@ -17,9 +17,7 @@ import java.util.NoSuchElementException;
 @DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = MainPageBase.class)
 public class MainPage extends MainPageBase {
 
-    public static final String PAGE_TITLE = "PRODUCTS";
-
-    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`name == \"PRODUCTS\"`]")
+    @ExtendedFindBy(iosClassChain = "**/XCUIElementTypeStaticText[`label == \"PRODUCTS\"`]")
     private ExtendedWebElement titleLabel;
 
     @FindBy(name = "test-Item")
@@ -36,7 +34,7 @@ public class MainPage extends MainPageBase {
     }
 
     public boolean isPageOpened() {
-        return isTitlePresent() && getTitleText().equalsIgnoreCase(PAGE_TITLE);
+        return isTitlePresent();
     }
 
     public boolean isTitlePresent() {
