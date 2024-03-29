@@ -9,7 +9,7 @@
 
     <test name="Hello World test">
         <classes>
-            <class name="com.solvd.carina.demo.HelloWorld" />
+            <class name="com.solvd.carina.demo.swaglabs.HelloWorld" />
         </classes>
     </test>
 
