@@ -1,10 +1,10 @@
 package com.solvd.carina.demo.swaglabs;
 
-import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.components.CartItemBase;
-import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.components.ItemBase;
-import com.solvd.carina.demo.mobile.gui.pages.swaglabs.utils.LoginUtil;
-import com.solvd.carina.demo.mobile.gui.pages.swaglabs.enums.UserType;
-import com.solvd.carina.demo.mobile.gui.pages.swaglabs.common.*;
+import com.solvd.carina.demo.mobile.swaglabs.common.*;
+import com.solvd.carina.demo.mobile.swaglabs.common.components.CartItemBase;
+import com.solvd.carina.demo.mobile.swaglabs.common.components.ItemBase;
+import com.solvd.carina.demo.mobile.swaglabs.utils.LoginUtil;
+import com.solvd.carina.demo.mobile.swaglabs.enums.UserType;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.mobile.IMobileUtils;
